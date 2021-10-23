@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Address{% endblock title %}
+{% block main-content %}
+<div class="container my-5">
+    <div class="row">
+        <h3>Welcome <span class="text-capitalize">{{request.user}}</span></h3>
+        <div class="col-sm-2 border-end">
+            <ul class="list-unstyled">
+                <li class="d-grid"><a href="{% url 'profile' %}" class="btn my-1">Profile <i
+                            class="fas fa-user"></i></a></li>
+                <li class="d-grid"><a href="{% url 'address' %}" class="btn {{active}} my-1">Address <i
+                            class="fas fa-map-marker-alt"></i></a></li>
+            </ul>
+        </div>
+        <div class="col-sm-9 offset-sm-1">
+            <h3 class="text-center alert alert-info">Your Address</h3>
+            <div class="row">
+                {% if add %}
+                {% for ad in add %}
+                <div class="col-sm-6">
+                    <div class="card">
+                        <div class="card-body card-fluid">
+
+                            <h3>Address {{forloop.counter}}</h3>
+                            <p>Name: {{ad.name}}</p>
+                            <p>Locality: {{ad.locality}}</p>
+                            <p>City: {{ad.city}}</p>
+                            <p>State: {{ad.state}}</p>
+                            <p>Pin Code: {{ad.zipcode}}</p>
+                            <form action="{% url 'deleteadd' ad.id %}" method="post">
+                                {% csrf_token %}
+                                <button type="submit" class="btn btn-sm btn-danger">Remove <i
+                                        class="fas fa-trash-alt"></i></button>
+                            </form>
+                        </div>
+
+                    </div>
+
+                </div>
+                {% endfor %}
+                {% else %}
+                <h3 class="text-center alert alert-danger">No Address Found !!</h3>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock main-content %}

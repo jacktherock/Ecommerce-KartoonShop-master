@@ -1,0 +1,89 @@
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="/">KartoonShop</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/">Home</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle   " href="#" id="electronicsDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Electronics
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="electronicsDropdown">
+                            <li><a class="dropdown-item" href="{% url 'mobile' %}">Mobile <i class="fas fa-mobile-alt"></i></a></li>
+                            <li><a class="dropdown-item" href="#">Laptop <i class="fas fa-laptop"></i></a></li>
+                            <li><a class="dropdown-item" href="#">Camera <i class="fas fa-camera"></i></a></li>
+                            <li><a class="dropdown-item" href="#">Speakers <i class="fas fa-speakers"></i></a></li>
+                            <li><a class="dropdown-item" href="#">Headsets <i class="fas fa-headphones"></i></a></li>
+                            <li><a class="dropdown-item" href="#">TV & Appliances <i class="fas fa-tv"></i></a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle   " href="#" id="fashionDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Fashion
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="fashionDropdown">
+                            <li><a class="dropdown-item" href="#">Shirts <i class="fas fa-tshirt"></i></a></li>
+                            <li><a class="dropdown-item" href="#">Pants</a></li>
+                            <li><a class="dropdown-item" href="#">Watches</a></li>
+                            <li><a class="dropdown-item" href="#">Specs</a></li>
+                            <li><a class="dropdown-item" href="#">Shoes</a></li>
+                            <li><a class="dropdown-item" href="#">Luxury</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle   " href="#" id="fashionDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Stationary
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="fashionDropdown">
+                            <li><a class="dropdown-item" href="#">Books</a></li>
+                            <li><a class="dropdown-item" href="#">Bags</a></li>
+                            <li><a class="dropdown-item" href="#">Water Bottles</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <form class="d-flex mx-5">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-warning" type="submit"><i class="fas fa-search"></i></button>
+                </form>
+                <div>
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        {% if request.user.is_authenticated %}
+                        <li class="nav-item dropdown mx-2">
+                            <a class="nav-link dropdown-toggle   " href="#" id="profileDropdown" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                {{request.user.username|capfirst}} <i class="fas fa-user"></i>
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="profileDropdown">
+                                <li><a class="dropdown-item" href="{% url 'profile' %}">Profile <i class="fas fa-user"></i></a></li>
+                                <li><a class="dropdown-item" href="{% url 'orders' %}">Orders</a></li>
+                                <li><a class="dropdown-item" href="{% url 'changepass' %}">Change Password</a></li>
+                                <li><a class="dropdown-item btn btn-outline-danger" href="{% url 'logout' %}">Logout <i class="fas fa-sign-out-alt"></i></a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item mx-2">
+                            <a href="{% url 'showcart' %}" class="nav-link   "><span
+                                    class="badge bg-danger">{{totalitem}}</span> Cart <i class="fas fa-shopping-cart"></i></a>
+                        </li>
+                        {% else %}
+                        <li class="nav-item mx-2">
+                            <a href="{% url 'login' %}" class="nav-link btn btn-outline-info ">Login <i class="fas fa-sign-in-alt"></i></a>
+                        </li>
+                        <li class="nav-item mx-2">
+                            <a href="{% url 'signup' %}" class="nav-link btn btn-outline-warning  ">SignUp <i class="fas fa-user-plus"></i></a>
+                        </li>
+                        {% endif %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>

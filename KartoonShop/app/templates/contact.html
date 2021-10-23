@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+
+{% comment %} css for the Contact page  {% endcomment %}
+
+{% block style %}
+.map-container {
+  height: 300px;
+  position: relative;
+}
+
+.map-container iframe {
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+}
+{% endblock style %}
+
+{% comment %} contact card main  {% endcomment %}
+
+{% comment %} backend is remaining for thes page  {% endcomment %}
+{% block main-content %}
+<div class="container mt-3">
+  <section class="text-center text-lg-left dark-grey-text mb-2">
+    <div class="row d-flex justify-content-center">
+      <h1 class="alert alert-primary ">Contact Us</h1>
+        <!--Google map-->
+        {% comment %} embedded the college location  {% endcomment %}
+        <div id="map-container-google-1" class="z-depth-1 map-container mb-5">
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3781.910751069286!2d73.97566661546873!3d18.578061987375545!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2c3821bbc1655%3A0x99177681cf30e864!2sParvatibai%20Genba%20Moze%20College%20of%20Engineering%2CPUNE!5e0!3m2!1sen!2sin!4v1629707629687!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+        </div>
+        <!--Google Maps-->
+
+        {% comment %} About our location  {% endcomment %}
+        <div class="row">
+          <div class="col-lg-5 col-md-12 mb-0 mb-md-0">
+            <h4 class="mb-3"><strong>Ecommerce</strong></h4>
+            <hr>
+            <p class="mb-1"><strong>Address:</strong> </p>
+            <p class="mb-1">Wagheshwar Temple Talathi Office MOZE Campus, Gat No 1178, Baif Rd,  </p>
+            <p class="mb-1">Wagholi, Pune,412207</p>
+            <p class="mb-1">Maharashtra </p>
+            <hr>
+          </div>
+          <!--Grid column-->
+
+          <!---Form for contacting -->
+          <div class="col-lg-7 col-md-12 mb-4 mb-md-0 text-center">
+            <form class="">
+              <div class="md-form md-outline">
+                <input type="text" id="form-subject" class="form-control" placeholder="Name">
+              </div>
+
+              <div class="md-form md-outline mt-3">
+                <input type="email" id="form-email" class="form-control" placeholder="E-mail">
+              </div>
+
+              <div class="md-form md-outline mt-3">
+                <textarea id="form76" class="md-textarea form-control" placeholder="Your message"rows="4"></textarea>
+              </div>
+
+              <button type="submit" class="btn btn-primary btn-md ml-0 mt-3 waves-effect waves-light">Send</button>
+            </form>
+          </div>
+          {% comment %} form ends here with div  {% endcomment %}
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+{% endblock main-content %}
